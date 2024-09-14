@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' >
-			<body className={`${rubik.className} bg-white dark:bg-slate-900 antialiased`}>
+			<body className={`${rubik.className} bg-gray-100 dark:bg-slate-900 antialiased`}>
 			<ThemeProvider
             attribute="class"
             defaultTheme="system"

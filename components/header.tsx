@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 
-import { YoutubeIcon, Sun } from 'lucide-react'
+import { YoutubeIcon } from 'lucide-react'
 import { ModeToggle } from './ui/mode-toggler'
 
 const Header = () => {
 	return (
-		<header className='fixed lg:relative left-0 right-0 top-0  py-4 bg-white dark:bg-slate-900  border-b border-gray-400 z-10 '>
+		<header className='fixed lg:relative left-0 right-0 top-0  py-4 bg-gray-100 dark:bg-slate-900  border-b border-gray-400 z-10 '>
 			<div className='flex justify-end lg:justify-between items-center max-w-screen-2xl mx-auto px-4 sm:px-6 2xl:px-0 '>
 
 				<Link
@@ -32,6 +32,7 @@ const Header = () => {
 						rel='noreferrer nofollow'
 						className='hidden sm:block'
 						aria-label='Youtube'>
+							
 						<YoutubeIcon className='size-7 text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:dark:text-gray-300' />
 					</Link>
 
