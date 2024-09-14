@@ -1,6 +1,5 @@
 import { Rubik } from 'next/font/google'
-import { ThemeProvider } from "@/components/theme-provider"
-
+import { ThemeProvider } from '@/components/theme-provider'
 
 const rubik = Rubik({
 	subsets: ['latin'],
@@ -22,15 +21,12 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en' >
+		<html lang='en'>
 			<body className={`${rubik.className} bg-gray-100 dark:bg-slate-900 antialiased`}>
-			<ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-				{children}</ThemeProvider></body>
+				<ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+					{children}
+				</ThemeProvider>
+			</body>
 		</html>
 	)
 }
