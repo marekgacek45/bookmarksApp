@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Command,
-  CommandEmpty,
+  
   CommandGroup,
-  CommandInput,
+
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
@@ -18,6 +18,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { MainCategory } from "@/sanity/lib/interface"
 
 const frameworks = [
   {
@@ -42,9 +43,11 @@ const frameworks = [
   },
 ]
 
-export function Combobox() {
+export function Combobox({mainCategories}: {mainCategories: MainCategory[]}) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
+
+console.log(mainCategories)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -56,8 +59,8 @@ export function Combobox() {
           className=" justify-start pl-0 font-semibold text-base focus:border text-violet-700  hover:text-violet-900 dark:text-yellow-300 dark:hover:text-yellow-500"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+            ? mainCategories.find((mainCategory) => mainCategory.title === value)?.title
+            : "Select category..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -67,10 +70,10 @@ export function Combobox() {
           <CommandList>
             {/* <CommandEmpty>No framework found.</CommandEmpty> */}
             <CommandGroup>
-              {frameworks.map((framework) => (
+              {mainCategories.map((mainCategory) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
+                  key={mainCategory.title}
+                  value={mainCategory.title}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue)
                     setOpen(false)
@@ -79,10 +82,10 @@ export function Combobox() {
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4 text-violet-700 dark:text-yellow-300",
-                      value === framework.value ? "opacity-100" : "opacity-0"
+                      value === mainCategory.title ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {framework.label}
+                  {mainCategory.title}
                 </CommandItem>
               ))}
             </CommandGroup>

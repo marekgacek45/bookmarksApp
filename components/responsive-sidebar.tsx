@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu, Info } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { Combobox } from './ui/combobox'
 import InfoModal from './info-modal'
+import { MainCategory } from '@/sanity/lib/interface'
 
-export function ResponsiveSidebar() {
+export function ResponsiveSidebar({mainCategories}: {mainCategories: MainCategory[]}) {
 	const hoverEffect =
 		"relative  w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-violet-700 after:dark:bg-yellow-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
 
@@ -44,7 +45,7 @@ export function ResponsiveSidebar() {
 				</SheetTrigger>
 				<SheetContent side='left' className='w-[240px] sm:w-[250px] bg-gray-100 dark:bg-slate-900'>
 					<div className='py-4'>
-						<Combobox />
+						<Combobox mainCategories={mainCategories}/>
 						<NavItems />
 					</div>
 				</SheetContent>
@@ -54,7 +55,7 @@ export function ResponsiveSidebar() {
 
 	return (
 		<aside className='hidden md:flex flex-col  h-screen p-4 sticky top-[20px] min-w-[200px] overflow-scroll px-0'>
-			<Combobox />
+			<Combobox mainCategories={mainCategories} />
 			<NavItems />
 		</aside>
 	)

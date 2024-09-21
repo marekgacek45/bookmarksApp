@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react'
 
 const Footer = () => {
 
-  const currentYear = new Date().getFullYear()
+
 
 	return (
 		<footer className='border-t py-4 border-gray-400 '>
