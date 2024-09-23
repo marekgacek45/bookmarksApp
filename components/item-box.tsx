@@ -1,8 +1,9 @@
+import { Item } from '@/sanity/lib/interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const ItemBox = () => {
+const ItemBox = ({item}: {item: Item}) => {
 	const hoverEffect =
 		"relative text-xl w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-violet-700 after:dark:bg-yellow-500 after:w-full after:scale-x-0 after:group-hover:scale-x-100 after:transition after:duration-300 after:origin-left"
 
@@ -14,11 +15,10 @@ const ItemBox = () => {
 			<div className='space-y-1'>
 				<h2
 					className={`text-lg font-bold text-black dark:text-white group-hover:text-violet-700 group-hover:dark:text-yellow-500 ${hoverEffect}`}>
-					Lapa Ninja
+					{item.title}
 				</h2>
 				<p className='text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-4'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quis, tempora obcaecati nam velit molestiae
-					autem ad nostrum omnis impedit. Unde, eos consequuntur?
+					{item.description}
 				</p>
 			</div>
 		</Link>
