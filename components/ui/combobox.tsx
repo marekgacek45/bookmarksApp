@@ -4,14 +4,14 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { MainCategory } from '@/sanity/lib/interface'
+import { Stack } from '@/sanity/lib/interface'
 
 export function Combobox({
 	allStacks,
 	setStack,
 	stack,
 }: {
-	allStacks: MainCategory[]
+	allStacks: Stack[]
 	setStack: (stack: string) => void
 	stack: string
 }) {

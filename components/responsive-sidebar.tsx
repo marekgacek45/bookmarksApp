@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
 import { Combobox } from './ui/combobox'
 import InfoModal from './info-modal'
-import { MainCategory, SubCategory } from '@/sanity/lib/interface'
+import { Stack, Category } from '@/sanity/lib/interface'
 
 export function ResponsiveSidebar({
 	allStacks,
@@ -16,8 +16,8 @@ export function ResponsiveSidebar({
 	setCategory,
 	category,
 }: {
-	allStacks: MainCategory[]
-	allCategories: SubCategory[]
+	allStacks: Stack[]
+	allCategories: Category[]
 	setStack: (stack: string) => void
 	stack: string
 	setCategory: (category: string) => void
