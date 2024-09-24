@@ -1,11 +1,11 @@
-export interface MainCategory {
+export interface Stack {
 	_id: string
 	title: string
 	slug: string
     icon: any
 }
 
-export interface SubCategory {
+export interface Category {
 	_id: string
 	title: string
 	slug: string
@@ -17,6 +17,6 @@ export interface Item {
 	link: string
     description: string
     icon: any
-	subCategories:Array<SubCategory>
-	mainCategories:Array<MainCategory>
+	subCategories:Array<Stack>
+	mainCategories:Array<Category>
 }

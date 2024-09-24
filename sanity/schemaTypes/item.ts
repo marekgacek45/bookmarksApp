@@ -38,7 +38,7 @@ export const item = {
             type: 'image',
             validation: (Rule: Rule) => Rule.required().error('Required'),
         },
-        { name: 'mainCategories', title: 'Main categories', type: 'array', of: [{ type: 'reference', to: { type: 'mainCategory' } }] },
-        { name: 'subCategories', title: 'Sub categories', type: 'array', of: [{ type: 'reference', to: { type: 'subCategory' } }] },
+        { name: 'stacks', title: 'Stacks', type: 'array', of: [{ type: 'reference', to: { type: 'stack' } }] },
+        { name: 'categories', title: 'Categories', type: 'array', of: [{ type: 'reference', to: { type: 'category' } }] },
 	],
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { client } from '@/sanity/lib/client'
-import { Item, MainCategory, SubCategory } from '@/sanity/lib/interface'
+import { Item, Stack, Category } from '@/sanity/lib/interface'
 import { ResponsiveSidebar } from '@/components/responsive-sidebar'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -10,7 +10,7 @@ import ItemBox from '@/components/item-box'
 
 // QUERIES
 async function getStacks() {
-	const query = `*[_type == "mainCategory" && count(*[_type == "item" && references(^._id)]) > 0]{
+	const query = `*[_type == "stack" && count(*[_type == "item" && references(^._id)]) > 0]{
     title,
     "slug": slug.current
   }`
@@ -20,7 +20,7 @@ async function getStacks() {
 }
 
 async function getCategories(category: string) {
-	const query = `*[_type == "subCategory" && count(*[_type == "item" && references(^._id) && references(*[_type == "mainCategory" && slug.current == "${category}"]._id)]) > 0] {
+	const query = `*[_type == "category" && count(*[_type == "item" && references(^._id) && references(*[_type == "stack" && slug.current == "${category}"]._id)]) > 0] {
 	  title,
 	  "slug": slug.current,
 	}`
@@ -30,7 +30,7 @@ async function getCategories(category: string) {
 }
 
 async function getItems(category: string) {
-	const query = `*[_type == "item" && references(*[_type == "subCategory" && slug.current == "${category}"]._id)]  {
+	const query = `*[_type == "item" && references(*[_type == "category" && slug.current == "${category}"]._id)]  {
     title,
     "slug": slug.current,
 	icon,
@@ -44,8 +44,8 @@ async function getItems(category: string) {
 
 export default function Home() {
 	// STATES
-	const [allStacks, setAllStacks] = useState<MainCategory[]>([])
-	const [allCategories, setAllCategories] = useState<SubCategory[]>([])
+	const [allStacks, setAllStacks] = useState<Stack[]>([])
+	const [allCategories, setAllCategories] = useState<Category[]>([])
 
 	const [stack, setStack] = useState('')
 	const [category, setCategory] = useState('')

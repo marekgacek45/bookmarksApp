@@ -1,8 +1,8 @@
 import { Rule, validation } from 'sanity'
 
-export const subCategory = {
-	name: 'subCategory',
-	title: 'Sub category',
+export const stack = {
+	name: 'stack',
+	title: 'Stack',
 	type: 'document',
 	fields: [
 		{
@@ -20,5 +20,11 @@ export const subCategory = {
 			},
 			validation: (Rule: Rule) => Rule.required().error('Required'),
 		},
+        {
+            name: 'icon',
+            title: 'Icon',
+            type: 'image',
+            validation: (Rule: Rule) => Rule.required().error('Required'),
+        },
 	],
 }
