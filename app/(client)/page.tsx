@@ -33,6 +33,9 @@ async function getItems(category: string) {
 	const query = `*[_type == "item" && references(*[_type == "subCategory" && slug.current == "${category}"]._id)]  {
     title,
     "slug": slug.current,
+	icon,
+	description,
+	link
   }`
 
 	const items = await client.fetch(query)

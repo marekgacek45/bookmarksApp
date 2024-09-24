@@ -1,3 +1,4 @@
+import { urlFor } from '@/sanity/lib/image'
 import { Item } from '@/sanity/lib/interface'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,10 +8,12 @@ const ItemBox = ({item}: {item: Item}) => {
 	const hoverEffect =
 		"relative text-xl w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-violet-700 after:dark:bg-yellow-500 after:w-full after:scale-x-0 after:group-hover:scale-x-100 after:transition after:duration-300 after:origin-left"
 
+console.log(item)
+
 	return (
-		<Link href='/' target='_blank' rel='norefferer nofollow' className='space-y-3 group'>
+		<Link href={item.link} target='_blank' rel='norefferer nofollow' className='space-y-3 group'>
 			<div className=' flex justify-center items-center  w-full aspect-square bg-white  rounded-sm shadow-lg group-hover:-translate-y-1 duration-500'>
-				<Image src='/react.png' alt='react' className='w-1/2' width={150} height={150} />
+				<Image src={urlFor(item.icon).url()} alt={`icon of ${item.title}`} className='w-1/2' width={150} height={150} />
 			</div>
 			<div className='space-y-1'>
 				<h2
