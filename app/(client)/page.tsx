@@ -1,16 +1,15 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { ResponsiveSidebar } from '@/components/responsive-sidebar'
-import ItemBox from '@/components/item-box'
 import { client } from '@/sanity/lib/client'
 import { Item, MainCategory, SubCategory } from '@/sanity/lib/interface'
-import { get } from 'http'
-import { set } from 'sanity'
+import { ResponsiveSidebar } from '@/components/responsive-sidebar'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
+import ItemBox from '@/components/item-box'
 
-async function getMainCategories() {
+// QUERIES
+async function getStacks() {
 	const query = `*[_type == "mainCategory" && count(*[_type == "item" && references(^._id)]) > 0]{
     title,
     "slug": slug.current
@@ -20,7 +19,7 @@ async function getMainCategories() {
 	return mainCategories
 }
 
-async function getSubCategories(category: string) {
+async function getCategories(category: string) {
 	const query = `*[_type == "subCategory" && count(*[_type == "item" && references(^._id) && references(*[_type == "mainCategory" && slug.current == "${category}"]._id)]) > 0] {
 	  title,
 	  "slug": slug.current,
@@ -41,40 +40,58 @@ async function getItems(category: string) {
 }
 
 export default function Home() {
-	const [category, setCategory] = useState('react') // Default category
-	
-	const [mainCategories, setMainCategories] = useState<MainCategory[]>([])
-	const [subCategories, setSubCategories] = useState<SubCategory[]>([])
+	// STATES
+	const [allStacks, setAllStacks] = useState<MainCategory[]>([])
+	const [allCategories, setAllCategories] = useState<SubCategory[]>([])
+
+	const [stack, setStack] = useState('')
+	const [category, setCategory] = useState('')
+
 	const [items, setItems] = useState<Item[]>([])
 
-	// Fetch main categories once on initial render
+	// FETCH DATA
+	// stacks
 	useEffect(() => {
-		const fetchMainCategories = async () => {
-			const mainCategoriesData = await getMainCategories()
-			setMainCategories(mainCategoriesData)
+		const fetchStacks = async () => {
+			const data = await getStacks()
+			setAllStacks(data)
+			if (data.length > 0) {
+				setStack(data[0].slug)
+			}
 		}
 
-		fetchMainCategories()
+		fetchStacks()
 	}, [])
 
+	// categories
+	useEffect(() => {
+		if (stack) {
+			const fetchCategories = async () => {
+				const data = await getCategories(stack)
+				setAllCategories(data)
+
+				if (data.length > 0) {
+					setCategory(data[0].slug)
+				}
+			}
+
+			fetchCategories()
+		}
+	}, [stack])
+
+	// items
+	useEffect(() => {
+		if (category) {
+			const fetchItems = async () => {
+				const data = await getItems(category)
+				setItems(data)
+			}
+
+			fetchItems()
+		}
+	}, [category])
+
 	
-	useEffect(() => {
-		const fetchItems = async () => {
-			const data = await getItems(category)
-			setItems(data)
-		}
-
-		fetchItems()
-	}, [category])
-
-	useEffect(() => {
-		const fetchSubCategories = async () => {
-			const data = await getSubCategories(category)
-			setSubCategories(data)
-		}
-
-		fetchSubCategories()
-	}, [category])
 
 	return (
 		<div>
@@ -82,10 +99,12 @@ export default function Home() {
 			<div className='flex min-h-screen max-w-screen-2xl mx-auto px-4 sm:px-6 2xl:px-0'>
 				{/* Sidebar */}
 				<ResponsiveSidebar
-					mainCategories={mainCategories}
-					subCategories={subCategories}
+					allStacks={allStacks}
+					allCategories={allCategories}
+					setStack={setStack}
+					stack={stack}
 					setCategory={setCategory}
-					category={category} // Pass setCategory to update category
+					category={category}
 				/>
 
 				{/* Main Content */}

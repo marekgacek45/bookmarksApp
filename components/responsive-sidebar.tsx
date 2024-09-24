@@ -1,24 +1,25 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
 import { Combobox } from './ui/combobox'
 import InfoModal from './info-modal'
 import { MainCategory, SubCategory } from '@/sanity/lib/interface'
-import { client } from '@/sanity/lib/client'
-import { set } from 'sanity'
 
 export function ResponsiveSidebar({
-	mainCategories,
-	subCategories,
+	allStacks,
+	allCategories,
+	setStack,
+	stack,
 	setCategory,
-	category
+	category,
 }: {
-	mainCategories: MainCategory[]
-	subCategories: SubCategory[]
+	allStacks: MainCategory[]
+	allCategories: SubCategory[]
+	setStack: (stack: string) => void
+	stack: string
 	setCategory: (category: string) => void
 	category: string
 }) {
@@ -38,23 +39,28 @@ export function ResponsiveSidebar({
 	}, [])
 
 	const handleClick = (category: string) => {
+		
 		setCategory(category)
+		
 		setIsOpen(false)
 	}
+
+	const  capitalize = (string: string) => {
+		if (!string) return ''; 
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	
 
 	const NavItems = () => (
 		<nav className='flex flex-col  space-y-4 mt-2 text-black dark:text-white'>
 			<InfoModal />
-			{subCategories.map(mainCategory => (
-				<Button
-					 variant="link"
-					key={mainCategory.title}
-					onClick={() => handleClick(mainCategory.slug)}
-					
-					
-					className={`hover:text-violet-900 dark:hover:text-yellow-500 self-start`}>
-					{mainCategory.title}
-				</Button>
+			{allCategories.map(item => (
+				<button
+					key={item.title}
+					onClick={() => handleClick(item.slug)}
+					className={`hover:text-violet-900 dark:hover:text-yellow-500 self-start ${hoverEffect} ${category == item.slug ? 'text-yellow-300 font-semibold' : ''} `}>
+					{capitalize(item.title)}
+				</button>
 			))}
 		</nav>
 	)
@@ -70,7 +76,7 @@ export function ResponsiveSidebar({
 				</SheetTrigger>
 				<SheetContent side='left' className='w-[240px] sm:w-[250px] bg-gray-100 dark:bg-slate-900'>
 					<div className='py-4'>
-						<Combobox mainCategories={mainCategories} setCategory={setCategory} category={category} />
+						<Combobox allStacks={allStacks} setStack={setStack} stack={stack} />
 						<NavItems />
 					</div>
 				</SheetContent>
@@ -80,7 +86,7 @@ export function ResponsiveSidebar({
 
 	return (
 		<aside className='hidden md:flex flex-col h-screen p-4 sticky top-[20px] min-w-[200px] overflow-scroll px-0'>
-			<Combobox mainCategories={mainCategories} setCategory={setCategory} category={category} />
+			<Combobox allStacks={allStacks} setStack={setStack} stack={stack} />
 			<NavItems />
 		</aside>
 	)
