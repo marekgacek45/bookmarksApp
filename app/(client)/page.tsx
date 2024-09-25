@@ -46,14 +46,15 @@ export default function Home() {
   // STATES
   const [allStacks, setAllStacks] = useState<Stack[]>([]);
   const [allCategories, setAllCategories] = useState<Category[]>([]);
-
-  // Get the stack from localStorage if available, or fallback to empty string
-  const [stack, setStack] = useState(() => {
-    return localStorage.getItem('selectedStack') || '';
-  });
-  
-  const [category, setCategory] = useState('');
+  const [stack, setStack] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
   const [items, setItems] = useState<Item[]>([]);
+
+  // Fetch the stack from localStorage once the component mounts
+  useEffect(() => {
+    const storedStack = typeof window !== 'undefined' ? localStorage.getItem('selectedStack') : '';
+    setStack(storedStack || '');
+  }, []);
 
   // FETCH DATA
   // stacks
@@ -69,11 +70,11 @@ export default function Home() {
     };
 
     fetchStacks();
-  }, []);
+  }, [stack]);
 
   // Update localStorage when the stack changes
   useEffect(() => {
-    if (stack) {
+    if (stack && typeof window !== 'undefined') {
       localStorage.setItem('selectedStack', stack);
     }
   }, [stack]);
