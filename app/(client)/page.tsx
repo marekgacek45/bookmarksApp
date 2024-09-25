@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { Metadata } from 'next'
 import { client } from '@/sanity/lib/client';
 import { Item, Stack, Category } from '@/sanity/lib/interface';
 import { ResponsiveSidebar } from '@/components/responsive-sidebar';
@@ -46,21 +45,7 @@ async function getItems(stack: string, category: string) {
 
 export const revalidate = 60
 
-export const metadata: Metadata = {
-	metadataBase: new URL('https://bookmarks.marekgacekdev.pl'),
-	title: 'Bookmarks - Essential Resources for Developers',
-	description:
-		"Discover a curated library of coding resources and sources at Marek Gacek's Coding Library. Explore tutorials, tools, and documentation to enhance your development skills and streamline your projects",
-	openGraph: {
-		title: 'Bookmarks - Essential Resources for Developers',
-		description:
-			"Explore Marek Gacek's blog for expert insights on web development, programming tutorials, and the latest in tech trends. Stay updated with tips, tools, and techniques.",
-		type: 'website',
-		locale: 'en_US',
-		url: 'https://bookmarks.marekgacekdev.pl',
-		siteName: 'Bookmarks - Essential Resources for Developers',
-	},
-}
+
 
 export default function Home() {
   // STATES
