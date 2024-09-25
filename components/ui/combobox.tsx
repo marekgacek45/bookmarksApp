@@ -33,7 +33,7 @@ export function Combobox({
           role='combobox'
           aria-expanded={open}
           className='justify-start pl-0 font-semibold text-base focus:border text-violet-700 hover:text-violet-900 dark:text-yellow-300 dark:hover:text-yellow-500'>
-          {selectedTitle || 'Select a stack'}
+          {selectedTitle || 'loading...'}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
@@ -47,7 +47,7 @@ export function Combobox({
                   value={item.title}
                   onSelect={() => {
                     setSelectedTitle(item.title);
-                    setStack(item.slug); // Set stack slug here
+                    setStack(item.slug); 
                     setOpen(false);
                   }}>
                   <Check
