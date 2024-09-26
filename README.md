@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Bookmarks App** 📚
 
-## Getting Started
+Welcome to **Bookmarks App**—your ultimate resource library for developers! This project aims to curate and organize the best programming libraries, tools, and courses, helping developers quickly find what they need.
 
-First, run the development server:
+## **Introduction**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Bookmarks App** was created to address the challenge of managing and discovering valuable programming resources. It streamlines access to a hand-picked collection of libraries, frameworks, and educational materials. With a clean UI and an intuitive search feature, this app offers a better alternative to scattered browser bookmarks.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## **Live Demo**
+Check out the live version here: [Bookmarks App](https://bookmarks.marekgacekdev.pl)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **Tech Stack**
+- **Next.js**: Server-side rendering for fast and responsive pages.
+- **Sanity**: CMS to easily manage and update content.
+- **Tailwind CSS**: For sleek and modern styling.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## **Project Purpose**
+The **Bookmarks App** is designed for developers, from beginners to pros, to discover and save valuable development resources in one convenient place. 
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to explore, contribute, or share feedback!
