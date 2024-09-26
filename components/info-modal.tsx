@@ -19,9 +19,9 @@ const InfoModal = () => {
 			<DialogTrigger className={` flex items-center gap-2 hover:text-violet-900 dark:hover:text-yellow-500 `}><Info className='size-3'/>Info</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Here I am writing some</DialogTitle>
-					<DialogDescription>
-						About idea of this page bla bla bla
+					<DialogTitle className='text-xl'>Your ultimate library for programming resources, libraries, and courses</DialogTitle>
+					<DialogDescription className='pt-4 text-base'>
+					Discover a curated collection of the best programming resources, libraries, and courses. From React and Laravel to modern development tools, Bookmarks offers a comprehensive library for developers of all levels. Explore, learn, and enhance your coding journey with organized and up-to-date content.
 					</DialogDescription>
 				</DialogHeader>
 			</DialogContent>

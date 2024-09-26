@@ -9,7 +9,7 @@ const hoverEffect =
 		"relative w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-violet-700 after:dark:bg-yellow-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
 
   return (
-    <div className="min-h-screen flex flex-col justify-between ic">
+    <div className="min-h-screen flex flex-col justify-between">
     <Header />
     <div className='lg:hidden'></div>
     <div className='flex h-full max-w-screen-2xl mx-auto px-4 sm:px-6 2xl:px-0'>
