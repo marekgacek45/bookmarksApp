@@ -115,7 +115,7 @@ export default function Home() {
 
 
   return (
-    <div>
+    <>
       <Header />
       <div className='flex min-h-screen max-w-screen-2xl mx-auto px-4 sm:px-6 2xl:px-0'>
         {/* Sidebar */}
@@ -138,6 +138,6 @@ export default function Home() {
         </main>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }

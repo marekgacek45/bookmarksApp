@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Bookmarks - Essential Resources for Developers',
 		description:
-			"Explore Marek Gacek's blog for expert insights on web development, programming tutorials, and the latest in tech trends. Stay updated with tips, tools, and techniques.",
+			"Discover a curated library of coding resources and sources at Marek Gacek's Coding Library. Explore tutorials, tools, and documentation to enhance your development skills and streamline your projects",
 		type: 'website',
 		locale: 'en_US',
 		url: 'https://bookmarks.marekgacekdev.pl',

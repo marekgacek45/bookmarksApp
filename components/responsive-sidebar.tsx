@@ -58,7 +58,7 @@ export function ResponsiveSidebar({
 				<button
 					key={item.title}
 					onClick={() => handleClick(item.slug)}
-					className={`hover:text-violet-900 dark:hover:text-yellow-500 self-start ${hoverEffect} ${category == item.slug ? 'text-yellow-300 font-semibold' : ''} `}>
+					className={`hover:text-violet-900 dark:hover:text-yellow-500 self-start ${hoverEffect} ${category == item.slug ? 'text-violet-700 dark:text-yellow-300 font-semibold' : ''} `}>
 					{capitalize(item.title)}
 				</button>
 			))}
