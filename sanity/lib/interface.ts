@@ -1,10 +1,3 @@
-export interface Stack {
-	_id: string
-	title: string
-	slug: string
-    icon: any
-}
-
 export interface Category {
 	_id: string
 	title: string
@@ -16,7 +9,6 @@ export interface Item {
 	slug: string
 	link: string
     description: string
-    icon: any
-	subCategories:Array<Stack>
+    icon: string
 	mainCategories:Array<Category>
 }

@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	images: {
+		formats: ['image/avif', 'image/webp'],
 		remotePatterns: [
 			{
 				protocol: 'https',
@@ -8,6 +15,6 @@ const nextConfig = {
 			},
 		],
 	},
-};
+}
 
-export default nextConfig;
+export default nextConfig

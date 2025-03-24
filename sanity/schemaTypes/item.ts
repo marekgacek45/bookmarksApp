@@ -1,4 +1,4 @@
-import { Rule, validation } from 'sanity'
+import { Rule } from 'sanity'
 
 export const item = {
 	name: 'item',
@@ -38,7 +38,6 @@ export const item = {
             type: 'image',
             validation: (Rule: Rule) => Rule.required().error('Required'),
         },
-        { name: 'stacks', title: 'Stacks', type: 'array', of: [{ type: 'reference', to: { type: 'stack' } }] },
         { name: 'categories', title: 'Categories', type: 'array', of: [{ type: 'reference', to: { type: 'category' } }] },
 	],
 }

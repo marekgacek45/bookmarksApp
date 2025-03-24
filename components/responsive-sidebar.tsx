@@ -4,22 +4,15 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
-import { Combobox } from './ui/combobox'
-import InfoModal from './info-modal'
-import { Stack, Category } from '@/sanity/lib/interface'
+import { Category } from '@/sanity/lib/interface'
 
 export function ResponsiveSidebar({
-	allStacks,
+
 	allCategories,
-	setStack,
-	stack,
 	setCategory,
 	category,
 }: {
-	allStacks: Stack[]
 	allCategories: Category[]
-	setStack: (stack: string) => void
-	stack: string
 	setCategory: (category: string) => void
 	category: string
 }) {
@@ -39,21 +32,17 @@ export function ResponsiveSidebar({
 	}, [])
 
 	const handleClick = (category: string) => {
-		
 		setCategory(category)
-		
 		setIsOpen(false)
 	}
 
-	const  capitalize = (string: string) => {
+	const capitalize = (string: string) => {
 		if (!string) return ''; 
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
-	
 
 	const NavItems = () => (
 		<nav className='flex flex-col  space-y-4 mt-2 text-black dark:text-white'>
-			<InfoModal />
 			{allCategories.map(item => (
 				<button
 					key={item.title}
@@ -76,7 +65,6 @@ export function ResponsiveSidebar({
 				</SheetTrigger>
 				<SheetContent side='left' className='w-[240px] sm:w-[250px] bg-gray-100 dark:bg-slate-900'>
 					<div className='py-4'>
-						<Combobox allStacks={allStacks} setStack={setStack} stack={stack} />
 						<NavItems />
 					</div>
 				</SheetContent>
@@ -85,8 +73,7 @@ export function ResponsiveSidebar({
 	}
 
 	return (
-		<aside className='hidden md:flex flex-col h-screen p-4 sticky top-[20px] min-w-[200px] overflow-scroll px-0'>
-			<Combobox allStacks={allStacks} setStack={setStack} stack={stack} />
+		<aside className='hidden md:flex flex-col h-screen p-4 sticky top-[20px] min-w-[200px] overflow-auto px-0'>
 			<NavItems />
 		</aside>
 	)

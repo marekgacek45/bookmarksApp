@@ -1,4 +1,4 @@
-import { Rule, validation } from 'sanity'
+import { Rule } from 'sanity'
 
 export const category = {
 	name: 'category',
